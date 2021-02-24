@@ -2,7 +2,7 @@
   "name": "video",
   "productName": "video aulas app",
   "main":"upload.js"
-  "version":"0.1.0",
+  "version":"1.0.0",
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
@@ -32,7 +32,7 @@
   "scripts": {
     "server": "NODE_ENV=production nodemon app.js",
     "servers": "nodemon app.js",
-    "upload": "nodemon upload.js"
+    "start": "nodemon upload.js"
   },
   "engines": {
     "node": "^12"
