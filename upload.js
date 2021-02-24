@@ -300,4 +300,4 @@ app.post("/upload",upload.single("foto"),(req,res,next)=>{
     res.send(file)
 })
 
-app.listen(10000)
+app.listen(8080)
