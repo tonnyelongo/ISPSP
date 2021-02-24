@@ -1,6 +1,7 @@
 {
   "name": "video",
   "productName": "video aulas app",
+  "main":"upload.js"
   "version": "0.1.0",
   "private": true,
   "dependencies": {
