@@ -25,10 +25,10 @@ app.use(session({ secret: 'keyboard cat',
 );
 app.use(subdomain('private', proff));
 var connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '',
-	database : 'almadb'
+	host     : process.env.MYSQL_ADDON_HOST,
+	user     : process.env.MYSQL_ADDON_USER,
+	password : process.env.MYSQL_ADDON_PASSWORD,
+	database : process.env.MYSQL_ADDON_DB
 });
 
 var storage=multer.diskStorage({
