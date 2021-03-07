@@ -29,10 +29,10 @@ app.use(session({ secret: 'keyboard cat',
 );
 app.use(subdomain('private', proff));
 var connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '',
-	database : 'almadb'
+	host     : 'bromot1yfhqwgv3bpddh-mysql.services.clever-cloud.com',
+	user     : 'unu1dm8taigyorvg',
+	password : 'YwBjx25vjjqrluGEvUgA',
+	database : 'bromot1yfhqwgv3bpddh'
 });
 
 var storage=multer.diskStorage({
