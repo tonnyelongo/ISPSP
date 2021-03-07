@@ -73,14 +73,14 @@ if(process.env.NODE_ENV==='production'){
 	})
 }
 
-
+/*
 app.get("/",(req,res)=>{
     if(req.session.loggedin){
 		res.redirect("/home")
 	}else{
 		res.redirect("/login")
 	}
-})
+})*/
 
 app.get("/home",(req,res)=>{
     if(req.session.loggedin){
