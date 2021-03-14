@@ -48,7 +48,7 @@ var upload=multer({storage:storage})
 
 app.set("views",__dirname+"/views")
 app.set("view engine","ejs")
-app.use(express.static(path.join(__dirname,"public")))
+
 
 
 
@@ -56,9 +56,6 @@ var http=require("http")
 var server = http.createServer(app)
 var io = require('socket.io')(server)
 
-app.get("/",(req,res)=>{
-	res.send("oi")
-})
 
 if(process.env.NODE_ENV==='production'){
 	app.use(express.static(__dirname+"/build"))
