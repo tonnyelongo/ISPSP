@@ -51,13 +51,7 @@ app.set("view engine","ejs")
 app.use(express.static(path.join(__dirname,"public")))
 
 
-/*if (process.env.NODE_ENV === "production") {
-	app.get("/",(req,res)=>{
-		app.use(express.static(__dirname+"/build"))
-		res.sendFile(path.join(__dirname+"/build/index.html"))
-	})
 
-}*/
 var http=require("http")
 var server = http.createServer(app)
 var io = require('socket.io')(server)
@@ -82,13 +76,7 @@ app.get("/",(req,res)=>{
 	}
 })*/
 
-app.get("/home",(req,res)=>{
-    if(req.session.loggedin){
-		res.render("index")
-	}else{
-		res.redirect("/login")
-	}
-})
+
 
 app.get("/publicar",(req,res)=>{
     if(req.session.loggedin){
@@ -105,13 +93,6 @@ app.get("/mensagens",(req,res)=>{
 	}
 })
 
-app.get("/login",(req,res)=>{
-	if(req.session.loggedin){
-		res.redirect("/home")
-	}else{
-		res.render("login")
-	}
-})
 
 app.get("/recover",(req,res)=>{
 	res.send("<h1>Recuperar senha</h1>")
