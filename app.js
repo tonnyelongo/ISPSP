@@ -94,6 +94,87 @@ app.get("/mensagens",(req,res)=>{
 app.get("/recover",(req,res)=>{
 	res.send("<h1>Recuperar senha</h1>")
 })
+app.post("/login-professor",(req,res)=>{
+
+	let nome=req.body.nome;//"FABIO ASSUNCAO";
+	let senha=req.body.senha;//"1998MARS";
+
+	console.log("dados: "+nome+" senha: "+senha);
+
+	connection.query("SELECT * FROM `professor WHERE nome=? AND password=?",[nome,senha],function(error,results,fields){
+		console.log(results);
+		 if(error)
+		 {
+			console.log(error);
+			connection.end();
+			res.end();
+		 }
+		 else
+		 {
+			 if(results.length>0)
+			 {
+				req.session.loggedin=true
+				req.session.nivel=results[0].nivel
+				req.session.key=results[0]
+				 res.json({message:"logado",resultado:results})
+				 console.log(results)
+				 console.log(results[0])
+				//res.redirect("/home")
+				res.end();
+			 
+			 }
+			 else
+			 {
+				res.json({message:"erro"});
+				//res.redirect("/login")
+				//connection.end();
+				res.end();
+			 }
+		 }
+	})
+	 
+});
+
+app.get("/login-estudante",(req,res)=>{
+
+	let nome="ANTONIO ELONGO"//req.body.nome;//"FABIO ASSUNCAO";
+	let senha="19981998"//req.body.senha;//"1998MARS";
+
+	console.log("dados: "+nome+" senha: "+senha);
+
+	connection.query("SELECT * FROM `estudante` WHERE nome=? AND senha=?",[nome,senha],function(error,results,fields){
+		console.log(results);
+		 if(error)
+		 {
+			console.log(error);
+			connection.end();
+			res.end();
+		 }
+		 else
+		 {
+			 if(results.length>0)
+			 {
+				req.session.loggedin=true
+				req.session.nivel=results[0].nivel
+				req.session.key=results[0]
+				 res.json({message:"logado",resultado:results})
+				 console.log(results)
+				 console.log(results[0])
+				//res.redirect("/home")
+				res.end();
+			 
+			 }
+			 else
+			 {
+				res.json({message:"erro"});
+				//res.redirect("/login")
+				//connection.end();
+				res.end();
+			 }
+		 }
+	})
+	 
+});
 
 app.post("/login",(req,res)=>{
 
@@ -135,6 +216,7 @@ app.post("/login",(req,res)=>{
 	})
 	 
 });
+
 app.get("/get_estudantes",(req,res)=>{
 	connection.query("SELECT e.ID_ESTUDANTE,e.NUMERO,e.NOME,c.CODIGO,c.DESIGNACAO,e.DATA_INGRESSO FROM `ESTUDANTE` `e` INNER JOIN `CODIFICACAO2` `c` ON c.ID_COD=e.ID_CODIF  ORDER BY e.ID_ESTUDANTE DESC",function(err,rows,fields){
 		if(err)
